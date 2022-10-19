@@ -1,0 +1,17 @@
+1. hens movement (咯咯哒)
+2. bushes listening for mother's bump (唰啦)(give the hens an opposite acceleration)
+3. moveable bushes listening for drag (沙沙沙)
+4. keyboard control chicken
+5. bushes listening for chicken's bump (唰啦)
+6. mother bumps chicken -- game over (咯咯哒咯咯哒)
+7. timer and winning detection (啾啾啾)
+
+8. start page (choice of difficulty - hens speed, # of bumps)
+9. pause phase (html interaction) (store all locations)
+10. localstorage (total # of days escaped)
+
+
+- bg music
+
+images:
+bushes 200*100

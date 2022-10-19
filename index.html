@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Catch Me if U Can</title>
+    <!-- load in the p5 core library -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/p5.js"></script>
+    <!-- note that you can load the p5.js library locally as well -->
+    <!-- <script src="../js/p5.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.4.2/lib/addons/p5.sound.min.js"></script>
+
+    <!-- note that you can load the p5.sound.min.js library locally as well -->
+    <!-- <script src="js/p5.sound.min.js"></script> -->
+    <script src="sketch.js"></script>
+
+    <style>
+      html {background-color: rgb(255, 245, 219)}
+      h3{
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 0%);
+      }
+
+      #p5canvas{
+          position: absolute;
+          left: 70%;
+          top: 0%;
+          transform: translate(-50%, 0%);
+      }
+
+      #p5_loading {
+        position: absolute;
+        width: 500px;
+        height: 500px;
+        font-size: 200%;
+        text-align: center;
+        left: 70%;
+        top: 0%;
+        transform: translate(-50%, 0%);
+      }
+
+      #progress_bar {
+       position: relative;
+       background-color: rgb(255, 221, 0);
+       height: 25px;
+       width: 0%;
+       top: 50%;
+       transform: translate(0%, -50%);
+     }
+
+      #description{
+        position: absolute;
+        left: 10px;
+        width: 40%;
+        overflow: auto;
+      }
+
+      #guide{
+        position: absolute;
+        top: 40%;
+        left: 10px;
+        width: 40%;
+        overflow: auto;
+      }
+    </style>
+
+  </head>
+  <body>
+    <button onclick="cheat(mom);">Cheat</button>
+    <div id="description"><h4>Description</h4>
+      You're a happy little chicken.<br>
+      In a sunny afternoon, you're playing in the farm, when your mom suddenly appears and calls you back for dinner.<br>
+      Escape from her to avoid having to go back home!<br>
+      <h4>Guide</h4>
+      1. Control your own movement using WASD.<br>
+      2. Stop your mom with the bushes!<br>
+      2.1 You may drag the bushes with your mouse to block her.<br>
+      2.2 (Only those with flowers on them are draggable)<br>
+      2.3 Beware! The bushes crash after being bumped a certain number of times by you mom!<br>
+      3. Escaping until time is over.<br>
+      <br><br>
+      <div id="summary"></div>
+    </div>
+
+
+    <script>
+/*
+    const timesFailed = window.localStorage.getItem('timesFailed');
+    const timesSucceeded = window.localStorage.getItem('timesSucceeded');
+    const mostBushes = window.localStorage.getItem('mostBushes');*/
+    const summary = document.getElementById('summary');
+
+    let summaryFailed;
+    if (timesFailed <= 0){
+      summaryFailed = "You had never been caught!";
+    }
+    else if (timesFailed == 1){
+      summaryFailed = `You have eaten 1 meal of disgusting worms.`;
+    }
+    else {
+      summaryFailed = `You have eaten ${timesFailed} meals of disgusting worms.`;
+    }
+
+    let summarySucceeded;
+    if (timesSucceeded <= 0){
+      summarySucceeded = "You have never escaped successfully.";
+    }
+    else if (summarySucceeded == 1){
+      summarySucceeded = `You have successfully escaped for 1 time!`;
+    }
+    else {
+      summarySucceeded = `You have escaped for ${timesSucceeded} times!`;
+    }
+
+    let summaryBushes;
+    if (countBushes <= 0){
+      summaryBushes = "You haven't saved any bushes.";
+    }
+    else if (countBushes == 1){
+      summaryBushes = `You have saved 1 bush.`;
+    }
+    else {
+      summaryBushes = `You have saved ${countBushes} bushes. Such an eco-friendly escaper!`;
+    }
+
+    summary.innerHTML= `${summaryFailed}<br>${summarySucceeded}<br>${summaryBushes}`
+
+    </script>
+
+    <div id="p5_loading" class="loadingclass">
+
+      <div id="progress_bar"></div>
+
+    </div>
+  </body>
+</html>
